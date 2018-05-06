@@ -1,3 +1,4 @@
+<div class="well">
 <h1><%= @restaurant.name %></h1>
 
 Opening Hours: <%= @restaurant.opening_hours %><br>
@@ -9,3 +10,4 @@ Description: <%= @restaurant.description %><br>
 <%= image_tag @restaurant.image, width: '600px' %>
 
 <%= link_to 'Back to index', admin_restaurants_path %>
+</div>
