@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>餐廳分類總表</h1>
+    <div>
+      <%= link_to 'New Category', new_admin_category_path, class: "btn btn-success" %>
+      <%= link_to 'Restaurant', admin_restaurants_path, class: "btn btn-primary" %>
+    </div>
+
+    <br>
+    <table  class="table table-hover">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= category.name %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>  
+
