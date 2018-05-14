@@ -4,6 +4,15 @@
       <%= link_to 'New Category', new_admin_category_path, class: "btn btn-success" %>
       <%= link_to 'Restaurant', admin_restaurants_path, class: "btn btn-primary" %>
     </div>
+    <br>
+    <div class="form-inline">
+      <%= form_for [:admin, @category] do |f| %>
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
+        </div>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
 
     <br>
     <table  class="table table-hover">
