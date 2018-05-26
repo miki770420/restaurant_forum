@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @comment = Comment.new
+    @comments = @restaurant.comments.all.order('created_at desc')
   end
 
 end
