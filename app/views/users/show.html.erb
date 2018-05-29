@@ -1,0 +1,15 @@
+<div class= "container">
+  <div class="col-md-4 well">
+    leave it for image
+  </div>
+  <div class="col-md-4 well">
+    <ul class="list-unstyled">
+      <li><strong><h2><%= @user.name %></h2></strong></li>
+      <li><strong><h6><%= @user.email %></h6></strong></li>
+      <li><h5><%= @user.intro %></h5></li>
+      <% if current_user == @user %>
+        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+      <% end %>
+    </ul>
+  </div>
+</div>
