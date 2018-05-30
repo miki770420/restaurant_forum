@@ -33,6 +33,8 @@ namespace :dev do
 
 
   task fake_comment: :environment do
+    Comment.destroy_all
+    
     Restaurant.all.each do |restaurant|
       3.times do |i|
         restaurant.comments.create!(
