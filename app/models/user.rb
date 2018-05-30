@@ -5,6 +5,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  mount_uploader :avatar, AvatarUploader
+
+  validates_presence_of :name, :email, :avatar
 
 
   def admin?
