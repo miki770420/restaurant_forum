@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :authenticate_owner, only: [:update]
 
   def show
+    @commented_restaurants = @user.restaurants.uniq
   end
 
   def edit

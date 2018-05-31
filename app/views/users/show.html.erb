@@ -13,3 +13,22 @@
     </ul>
   </div>
 </div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @commented_restaurants.count %> Comments</h3>
+    </div>
+    <div class="panel-body">
+      <% @commented_restaurants.each do |restaurant| %>
+      <%= link_to restaurant_path(restaurant) do %>
+        <div class="my-restaurant">
+          <div>
+            <%= image_tag "http://lorempixel.com/400/200/food", class: "img-responsive center-block" %>
+          </div>
+            <h5><%= restaurant.name %></h5>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
