@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @comment = @restaurant.comments.find(params[:id])
 
-    if current_user.admin? || current_user==comment.user
+    if current_user.admin? || current_user == @comment.user
       @comment.destroy
       redirect_to restaurant_path(@restaurant)
     end
