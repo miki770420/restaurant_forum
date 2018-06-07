@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :authenticate_owner, only: [:update]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @commented_restaurants = @user.restaurants.uniq
   end
