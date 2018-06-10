@@ -46,4 +46,19 @@ namespace :dev do
     puts "have created fake comment"
     puts "now you have #{Comment.count} comment data"
   end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+    
+    Restaurant.all.each do |restaurant|
+      3.times do |i|
+        restaurant.comments.create!(
+        content: FFaker::BaconIpsum.sentence,
+        user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake comment"
+    puts "now you have #{Comment.count} comment data"
+  end
 end
