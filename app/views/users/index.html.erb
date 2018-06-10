@@ -1,9 +1,19 @@
-<ul>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><%= link_to "Homepage", root_path %></li>
+    <li role="presentation"><%= link_to "最新動態", feeds_restaurants_path %></li>
+    <li role="presentation" class="active"><%= link_to "美食達人", followships_path %></li>
+  </ul>
+  <h1>美食達人</h1>
   <% @users.each do |user| %>
-  <li>
-    <%= user.name %>
-    <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
-    <%= link_to 'Unfollow', followship_path(user), method: :delete %>
-  </li>
+    <div class="col-sm-5 col-md-3">
+      <div class="user-item">
+        <%= image_tag "http://lorempixel.com/400/200/food", class: "img-responsive center-block" %>
+        <div>
+          <h5 class="text-center"><%= user.name %></h5>
+          <div class="text-center"><%= render partial: "shared/follow", locals: {user: user} %></div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
