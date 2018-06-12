@@ -6,6 +6,7 @@
     <ul class="list-unstyled">
       <li><strong><h2><%= @user.name %></h2></strong></li>
       <li><strong><h6><%= @user.email %></h6></strong></li>
+      <li><h6><%= @commented_restaurants.count %>*已評論餐廳 <%= @favorited_restaurants.count %>*收藏餐廳 <%= @user.followings.count %>*followings <%= @user.followers.count %>*followers</h6></li>
       <li><h5><%= @user.intro %></h5></li>
       <% if current_user == @user %>
         <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
@@ -13,22 +14,79 @@
     </ul>
   </div>
 </div>
-<div class="container">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @commented_restaurants.count %> Comments</h3>
-    </div>
-    <div class="panel-body">
-      <% @commented_restaurants.each do |restaurant| %>
-      <%= link_to restaurant_path(restaurant) do %>
-        <div class="my-restaurant">
-          <div>
-            <%= image_tag "http://lorempixel.com/400/200/food", class: "img-responsive center-block" %>
+
+<br>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followings.count %> followings</h3>
           </div>
-            <h5><%= restaurant.name %></h5>
+          <ul class="list-group">
+            <% @followings.each do |following| %>
+            <li class="list-group-item">
+              <%= link_to user_path(following) do %>
+                <%= image_tag "http://lorempixel.com/400/200/food", height:30, width: 30, class: "img-circle" %>
+                <%= following.name %>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
         </div>
-      <% end %>
-      <% end %>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followers.count %> followers</h3>
+          </div>
+          <ul class="list-group">
+            <% @followers.each do |follower| %>
+            <li class="list-group-item">
+              <%= link_to user_path(follower) do %>
+                <%= image_tag "http://lorempixel.com/400/200/food", height:30, width: 30, class: "img-circle" %>
+                <%= follower.name %>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @commented_restaurants.count %> 已評論餐廳</h3>
+        </div>
+        <div class="panel-body">
+          <% @commented_restaurants.each do |commented| %>
+          <%= link_to restaurant_path(commented) do %>
+            <div class="my-restaurant">
+              <div>
+                <%= image_tag "http://lorempixel.com/400/200/food", class: "img-responsive center-block" %>
+              </div>
+                <h5><%= commented.name %></h5>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @favorited_restaurants.count %> 收藏餐廳</h3>
+        </div>
+        <div class="panel-body">
+          <% @favorited_restaurants.each do |favorited| %>
+          <%= link_to restaurant_path(favorited) do %>
+            <div class="my-restaurant">
+              <div>
+                <%= image_tag "http://lorempixel.com/400/200/food", class: "img-responsive center-block" %>
+              </div>
+                <h5><%= favorited.name %></h5>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+
 </div>
